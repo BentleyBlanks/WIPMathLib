@@ -49,13 +49,14 @@ public:
 //
 	//定义在Vector2.h中
 	explicit RBVector4(RBVector2 axy, RBVector2 azw);
-//
-//	/**
-//	 * Constructor.
-//	 *
-//	 * @param EForceInit Force Init Enum.
-//	 */
-//	explicit RBVector4(EForceInit);
+
+	/**
+	 * Constructor.
+	 *
+	 * @param EForceInit Force Init Enum.
+	 */
+	explicit RBVector4(RBMath::EForceInits)
+		:x(0.f),y(0.f),z(0.f),w(0.f){}
 //
 //	/**
 //	 * Access a specific component of the vector.
@@ -172,6 +173,15 @@ public:
 	{
 		const f32 s_inv = 1.f/s;
 		return RBVector4(x*s_inv,y*s_inv,z*s_inv,w*s_inv);
+	}
+
+	void operator/=(f32 s)
+	{
+		const f32 s_inv = 1.f/s;
+		x *= s_inv;
+		y *= s_inv;
+		z *= s_inv;
+		w *= s_inv;
 	}
 //
 //	/**
@@ -336,7 +346,7 @@ public:
 //	 */
 	RBVector4 operator^( const RBVector4& v) const
 	{
-		return RBVector4(y*v.z-z*v.y,z*v.x-x*v.z,x*v.y-v.x,0.f);
+		return RBVector4(y*v.z-z*v.y,z*v.x-x*v.z,x*v.y-v.x*y,0.f);
 	}
 //
 //	/**
@@ -495,5 +505,10 @@ public:
 	{
 		printf("(%3.3f,%3.3f,%3.3f,%3.3f)\n",x,y,z,w);
 	}
+
+	static  const RBVector4 zero_vector;
+	//static  const RBVector4 up_vector;
 };
+
+template <> struct TIsPODType<RBVector4> { enum { v = true }; };
 

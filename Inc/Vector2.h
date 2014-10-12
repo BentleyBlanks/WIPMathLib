@@ -1,12 +1,12 @@
 #pragma once
-#include "RBMathUtilities.h"
+//#include "RBMathUtilities.h"
 /*with:
  *     stdlib.h/
  *	   RBMathBase.h/math.h
  */
-#include "stdio.h"
+//#include "stdio.h"
 #include "Vector3.h"
-#include "Vector4.h"
+//#include "Vector4.h"
 
 /*
  *2D行向量
@@ -31,6 +31,10 @@ public:
 	 *暂留一个使用整型向量初始化的向量
 	 */
 	FORCEINLINE RBVector2(RBVector2I ivec){}
+
+
+	explicit FORCEINLINE RBVector2(RBMath::EForceInits)
+		:x(0.f),y(0.f){}
 
 	//不禁止隐式复制，交给编译器优化
 	//explicit FORCEINLINE RBVector2(const RBVector2& vec2):x(vec2.x),y(vec2.y){}
@@ -457,3 +461,5 @@ RBVector2 RBVector3::unit_cartesian_to_spherical() const
 RBVector4::RBVector4(RBVector2 axy,RBVector2 azw)
 	:x(axy.x),y(axy.y),z(azw.x),w(azw.y){}
 	*/
+
+template <> struct TIsPODType<RBVector2> { enum { v = true }; };

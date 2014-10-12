@@ -2,12 +2,22 @@
 #include "stdlib.h"
 #include "RBMathBase.h"//with math.h
 
+
+
+
 //常量定义
 const f32 INV_RAND_MAX = 1.f/RAND_MAX;
 const f32 INV_RAND_MAX_ADD1 = 1.f/(f32)((u32)RAND_MAX+1);
 
 struct RBBaseMath
 {
+	//定义枚举
+	enum EForceInits
+	{
+		E_FORCEINIT,
+		E_FORCETOZERO
+	};
+
 	//e的a次方
 	static FORCEINLINE f32 exp(f32 a){return ::expf(a);}
 	static FORCEINLINE f32 ln(f32 a){return ::logf(a);}

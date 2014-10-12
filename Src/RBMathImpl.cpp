@@ -6,6 +6,7 @@
 //RBVector4 definetion
 RBVector4::RBVector4(RBVector2 axy,RBVector2 azw)
 	:x(axy.x),y(axy.y),z(azw.x),w(azw.y){}
+const RBVector4 RBVector4::zero_vector(0.f,0.f,0.f,1.f);
 
 
 //RBVector3 definetion

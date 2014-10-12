@@ -8,8 +8,7 @@
  *			stdlib.h/
  *			RBMathBase.h/math.h
  */
-
-#include "WindowsPlatformTemp.h"
+//#include "WindowsPlatformTemp.h"
 #include <iostream>
 
 class RBMatrix
@@ -26,6 +25,8 @@ public:
 	FORCEINLINE RBMatrix(const RBVector3& tx,const RBVector3& ty,const RBVector3& tz,const RBVector3& tw);
 	
 	FORCEINLINE RBMatrix(const RBVector4& tx,const RBVector4& ty,const RBVector4& tz,const RBVector4& tw);
+
+	FORCEINLINE RBMatrix(f32 n00,f32 n01,f32 n02,f32 n03,f32 n10,f32 n11,f32 n12,f32 n13,f32 n20,f32 n21,f32 n22,f32 n23,f32 n30,f32 n31,f32 n32,f32 n33);
 
 	INLINE void set_identity();
 
@@ -124,6 +125,16 @@ FORCEINLINE RBMatrix::RBMatrix(const RBVector4& tx,const RBVector4& ty,const RBV
 	m[1][0] = ty.x;m[1][1] = ty.y;m[1][2] = ty.z;m[1][3] = ty.w;
 	m[2][0] = tz.x;m[2][1] = tz.y;m[2][2] = tz.z;m[2][3] = tz.w;
 	m[3][0] = tw.x;m[3][1] = tw.y;m[3][2] = tw.z;m[3][3] = tw.w;
+}
+
+FORCEINLINE RBMatrix::RBMatrix(f32 n00,f32 n01,f32 n02,f32 n03,f32 n10,f32 n11,f32 n12,f32 n13,f32 n20,f32 n21,f32 n22,f32 n23,f32 n30,f32 n31,f32 n32,f32 n33)
+{
+	
+	m[0][0] = n00;m[0][1] = n01;m[0][2] = n02;m[0][3] = n03;
+	m[1][0] = n10;m[1][1] = n11;m[1][2] = n12;m[1][3] = n13;
+	m[2][0] = n20;m[2][1] = n21;m[2][2] = n22;m[2][3] = n23;
+	m[3][0] = n30;m[3][1] = n31;m[3][2] = n32;m[3][3] = n33;
+
 }
 
 INLINE void RBMatrix::set_identity()

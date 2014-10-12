@@ -60,8 +60,8 @@ typedef void* VOID_PTR;
 
 //0 success 1 fail
 #define INI_RESULT u32
-#define INI_SUCCESS 0
-#define INI_FAIL 1
+#define INI_SUCCESS 1
+#define INI_FAIL 0
 //定义错误代码
 #define SYSTEM_MEMORY_LEAK 0
 #define SYSTEM_MEMORY_SHORT 0
@@ -69,3 +69,10 @@ typedef void* VOID_PTR;
 
 //以下标识符
 #define RB_API
+
+
+template<typename T>
+class TIsPODType;
+
+//template <> struct TIsPODType<RBObjectLoder> { enum { v = false }; };
+//TIsPODType<RBVector4>::v

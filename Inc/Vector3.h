@@ -1,10 +1,10 @@
 #pragma once
-#include "RBMathUtilities.h"
+//#include "RBMathUtilities.h"
 /*with:
  *     stdlib.h/
  *	   RBMathBase.h/math.h
  */
-#include "stdio.h"
+//#include "stdio.h"
 #include "Vector4.h"
 
 /*
@@ -46,7 +46,7 @@ public:
 	 * @param V 4D Vector to copy from.
 	 */
 	FORCEINLINE RBVector3( const RBVector4& v4)
-		:x(v4.x),y(v4.y),z(v4.z){};
+		:x(v4.x),y(v4.y),z(v4.z){}
 
 	/**
 	 * Constructor
@@ -74,7 +74,8 @@ public:
 	 *
 	 * @param EForceInit Force Init Enum
 	 */
-	//explicit FORCEINLINE RBVector3(EForceInit);
+	explicit FORCEINLINE RBVector3(RBMath::EForceInits)
+		:x(0.f),y(0.f),z(0.f){}
 
 
 	/**
@@ -1271,3 +1272,4 @@ const RBVector3 RBVector3::zero_vector(0.f,0.f,0.f);
 const RBVector3 RBVector3::up_vector(0.f,0.f,1.f);
 */
 
+template <> struct TIsPODType<RBVector3> { enum { v = true }; };
